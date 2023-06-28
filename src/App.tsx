@@ -23,6 +23,9 @@ function App() {
 						<li>
 							<Link to='/zustand-example'>Zustand example</Link>
 						</li>
+						<li>
+							Prakhar commit test
+						</li>
 					</ul>
 				</nav>
 			) : null}
