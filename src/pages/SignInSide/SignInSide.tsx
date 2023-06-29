@@ -13,6 +13,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { Copyright } from "../../components/Copyright/Copyright";
+import { axiosInstance } from "../../utils/axios/axios";
 
 // TODO - Add background image
 
@@ -106,7 +107,20 @@ export default function SignInSide() {
 							fullWidth
 							variant='contained'
 							sx={{ mt: 3, mb: 2 }}
-							onClick={() => navigate("/dashboard")}
+							onClick={() => {
+								axiosInstance
+									.post("/api/login")
+									.then((response: { status: number }) => {
+										if (response.status === 200) {
+											// If the response is successful, navigate to another page
+											navigate("/dashboard");
+										}
+									})
+									.catch((error: any) => {
+										// Handle any errors that occurred during the Axios request
+										console.error("Error:", error);
+									});
+							}}
 						>
 							Sign In
 						</Button>
