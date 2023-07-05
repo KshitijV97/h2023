@@ -5,14 +5,15 @@
 
 import vertexai
 from vertexai.language_models import TextGenerationModel
-import google.auth
+from transformers import pipeline
 
 import os
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.expanduser('~/.config/gcloud/application_default_credentials.json')
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.expanduser(
+    '~/.config/gcloud/application_default_credentials.json')
+
 
 def parts_of_speech(input_to_llm):
-
     vertexai.init(
         project="ac-cntxtlbank-sct-project",
         location="us-central1",
@@ -34,6 +35,12 @@ def parts_of_speech(input_to_llm):
     print(response.text)
 
 
+def sentiment_analysis(input_to_transformer):
+    classifier = pipeline(model="distilbert-base-uncased-finetuned-sst-2-english")
+    result = classifier(input_to_transformer)
+    print(result)   #[{'label': 'POSITIVE', 'score': 0.9989916682243347}]
+    print(result[0]['score'])
+
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
@@ -42,8 +49,15 @@ def print_hi(name):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     input_to_llm = """Extract various parts of the given text into items like email, address, phone number. 
-        text: Hi, My name is Yash Patil, i work with Google Cloud Platform and live in Privet Drive, Surrey. You can contact me at 9876543210
+        text: Hi, My name is Yash Patil, i work with Google Cloud Platform and live in Privet Drive, Surrey. 
+        You can contact me at 9876543210
         """
-    parts_of_speech(input_to_llm)
+    input_for_sentiment = """Give me the sentiment analysis (both score and magnitude) of the below text. 
+        text: For the third year running, Deutsche Bank’s Foreign Exchange (FX) 
+        business has scooped Best Liquidity Provider for Forwards/Swaps and placed top 
+        in a new category - Best New Algo - in FX Markets’ eFX Awards 2023.
+        """
+    # parts_of_speech(input_to_llm)
+    sentiment_analysis(input_for_sentiment)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
