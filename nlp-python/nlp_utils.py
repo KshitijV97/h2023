@@ -43,7 +43,7 @@ def sentiment_analysis_bert(input_to_transformer):
     print(result)  # [{'label': 'POSITIVE', 'score': 0.9989916682243347}]
     return {
         'inputText': input_to_transformer,
-        'sentimentScore': result.text
+        'sentimentScore': result
     }
 
 
