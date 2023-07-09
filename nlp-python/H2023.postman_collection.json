@@ -91,6 +91,70 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "LocalEmailClassification-Loan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subject\": \"Home Loan Application Status Inquiry - Required Details\",\n    \"body\": \"I hope this email finds you well. I am writing to inquire about the status of my home loan application, which I submitted to your esteemed institution on [date of application]. To assist you in locating my application and provide an update, I am providing the following mandatory details: Full Name: [Your Full Name] Application Date: [Date of Application] Loan Reference Number (if applicable): [Reference Number] I understand that the evaluation process may take some time, and I appreciate your team's efforts in reviewing applications. However, it has been [insert number of weeks or months] since I submitted my application, and I am eager to know the progress. If there are any additional documents or information required from my end to facilitate the review process, please let me know. I am more than willing to provide any necessary details promptly. I kindly request your assistance in providing an update on my application as soon as possible. You can reach me via email at [your email address] or by phone at [your phone number] during regular business hours. Thank you for your attention to this matter. I look forward to your prompt response.Sincerely,\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/email-classification",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"email-classification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LocalEmailClassification-CreditCard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"subject\": \"Home Loan Application Status Inquiry - Required Details\",\n    \"body\": \"I hope this email finds you well. I am writing to inquire about the status of my credit card application, which I submitted to your esteemed institution on [date of application]. I understand that the processing time may vary, and I appreciate the effort and time your team puts into reviewing and evaluating applications. However, it has been [insert number of weeks or months] since I submitted my application, and I would like to obtain an update on its progress, if possible. To assist you in locating my application in your system, I am providing the following details: Full Name: [Your Full Name] Application Date: [Date of Application] Application Reference Number (if applicable): [Reference Number] I am excited about the possibility of obtaining a credit card through your institution and would appreciate any information you can provide regarding the status of my application. If there are any additional documents or information required from my end to expedite the process, please let me know, and I will promptly provide the requested details. I understand the importance of providing accurate and complete information to facilitate the evaluation process. I kindly request your assistance in providing an update on my application at your earliest convenience. I can be reached via email at [your email address] or by phone at [your phone number] during regular business hours. Thank you very much for your attention to this matter, and I look forward to hearing from you soon. Yours sincerely,\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/api/email-classification",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"email-classification"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
