@@ -7,28 +7,24 @@ import os
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.expanduser(
     '~/.config/gcloud/application_default_credentials.json')
 
-
-def init_vertex():
-    vertexai.init(
-        project="ac-cntxtlbank-sct-project",
-        location="us-central1",
-    )
-    parameters = {
-        "temperature": 0.2,
-        "max_output_tokens": 256,
-        "top_p": 0.8,
-        "top_k": 40
-    }
-    model = TextGenerationModel.from_pretrained("text-bison@001")
-    return model, parameters
+vertexai.init(
+    project="ac-cntxtlbank-sct-project",
+    location="us-central1",
+)
+parameters = {
+    "temperature": 0.2,
+    "max_output_tokens": 256,
+    "top_p": 0.8,
+    "top_k": 40
+}
+vertex_palm_model = TextGenerationModel.from_pretrained("text-bison@001")
+bert_text_sentiment_model = pipeline(model="distilbert-base-uncased-finetuned-sst-2-english")
 
 
 def parts_of_speech_vertex(tm_input):
 
-    model, parameters = init_vertex()
-
     print('calling VertexAi for predictions...')
-    response = model.predict(
+    response = vertex_palm_model.predict(
         tm_input,
         **parameters
     )
@@ -38,8 +34,7 @@ def parts_of_speech_vertex(tm_input):
 
 
 def sentiment_analysis_bert(input_to_transformer):
-    classifier = pipeline(model="distilbert-base-uncased-finetuned-sst-2-english")
-    result = classifier(input_to_transformer)
+    result = bert_text_sentiment_model(input_to_transformer)
     print(result)  # [{'label': 'POSITIVE', 'score': 0.9989916682243347}]
     return {
         'inputText': input_to_transformer,
@@ -48,8 +43,7 @@ def sentiment_analysis_bert(input_to_transformer):
 
 
 def email_classification_vertex(email_text):
-    model, parameters = init_vertex()
-    result = model.predict(
+    result = vertex_palm_model.predict(
         email_text,
         **parameters
     )
