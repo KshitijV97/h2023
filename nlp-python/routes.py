@@ -39,6 +39,8 @@ def email_classification():
     ece = EmailClassificationEntity(data['subject'], data['body'])
     input_to_email_classifier = 'extract below email text into banking enquiry categories like ' \
                                 'loan application enquiry, credit card enquiry, account statement request and more, ' \
+                                'and extract the relevant fields from the mail like ' \
+                                'application request number and contact details to search, ' \
                                 'text: {}'.format(ece.body)
     return {
         'emailClassificationResults': email_classification_vertex(input_to_email_classifier)
