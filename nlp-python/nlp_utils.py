@@ -3,7 +3,7 @@ from transformers import pipeline
 from vertexai.language_models import TextGenerationModel
 
 vertexai.init(
-    project="ac-cntxtlbank-sct-project",
+    project="hack-team-neuralsquad",
     location="us-central1",
 )
 parameters = {

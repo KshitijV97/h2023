@@ -17,7 +17,8 @@ def health():
 def topic_modelling():
     data = request.get_json()
     tme = TopicModellingEntity(data['topics'], data['text'])
-    input_to_llm = 'Extract various parts of the given text into items like {}, text: {}'.format(tme.topics, tme.text)
+    input_to_llm = 'Extract various parts of the given text into items like {} and give a plain text json response, ' \
+                   'text: {}'.format(tme.topics, tme.text)
     print(input_to_llm)
     return {
         'topicModellingOutput': parts_of_speech_vertex(input_to_llm)
@@ -41,6 +42,7 @@ def email_classification():
                                 'loan application enquiry, credit card enquiry, account statement request and more, ' \
                                 'and extract the relevant fields from the mail like ' \
                                 'application request number and contact details to search, ' \
+                                'give a plain text json response,' \
                                 'text: {}'.format(ece.body)
     return {
         'emailClassificationResults': email_classification_vertex(input_to_email_classifier)
