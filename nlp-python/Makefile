@@ -6,3 +6,11 @@ auth:
 
 run:
 	python3 main.py
+
+build-image:
+	docker build --no-cache -t h2023-python .
+
+run-image:
+	docker run -p 8080:8080 h2023-python
+
+run-in-docker: build-image run-image

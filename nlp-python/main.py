@@ -18,7 +18,7 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print("starting server at [127.0.0.1:5000] ... ")
-    app.run(debug=True)
+    print("starting server at [127.0.0.1:8080] ... ")
+    app.run(debug=True, port=8080)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

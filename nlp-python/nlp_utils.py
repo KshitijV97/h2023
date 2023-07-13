@@ -2,11 +2,6 @@ import vertexai
 from transformers import pipeline
 from vertexai.language_models import TextGenerationModel
 
-import os
-
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.expanduser(
-    '~/.config/gcloud/application_default_credentials.json')
-
 vertexai.init(
     project="ac-cntxtlbank-sct-project",
     location="us-central1",
