@@ -1,11 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
-:root {
-	--COLOR-GRAY: #333333;
-	--COLOR-GRAY-DARK: #222222;
-	--COLOR-GRAY-LIGHT: #cccccc;
-	--COLOR-ONGOING: #98c1d9;
-	--COLOR-DONE: #ee6c4d;
+html,
+body,
+#root,
+.app,
+.content {
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.app {
+  display: flex;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
