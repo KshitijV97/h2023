@@ -1,3 +1,5 @@
+import json
+
 import vertexai
 from transformers import pipeline
 from vertexai.language_models import TextGenerationModel
@@ -46,7 +48,7 @@ def email_classification_vertex(email_text):
     return {
         'inputText': email_text,
         'emailClassificationResult': {
-            'response': result.text,
+            'response': json.loads(result.text),
             'safety_attributes': result.safety_attributes
         }
     }

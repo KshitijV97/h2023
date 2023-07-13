@@ -10,6 +10,7 @@ class TopicModellingEntity:
 
 
 class EmailClassificationEntity:
-    def __init__(self, subject, body):
+    def __init__(self, sent_from, subject, body):
+        self.sent_from = sent_from
         self.subject = subject
         self.body = body
